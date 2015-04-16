@@ -14,17 +14,17 @@
         margin-left: auto;
         margin-right: auto;
       }
-    
+
     :javascript
       $(function(){
         $.ajaxPrefilter(function(o, options){
           options.headers = { 'X-CSRF-Token': '#{form_authenticity_token.to_s}' }
-        });      
+        });
       });
 
       $(function () {
         window.swaggerUi = new SwaggerUi({
-          discoveryUrl: "http://#{request.host}:#{request.port}/api/swagger_doc.json",
+          discoveryUrl: "http://#{request.host}:#{request.port}/swagger_doc.json",
           apiKey:"",
           dom_id:"swagger-ui-container",
           supportHeaderParams: false,
