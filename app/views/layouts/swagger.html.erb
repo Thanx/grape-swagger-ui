@@ -7,6 +7,8 @@
     <%= stylesheet_link_tag :swagger_ui, :media => :all %>
     <%= csrf_meta_tags %>
 
+    <% swagger_path = ENV['SWAGGER_UI_PATH'] || '' %>
+
     <script>
 
         $(function () {
@@ -17,7 +19,7 @@
 
         $(function () {
             window.swaggerUi = new SwaggerUi({
-                url: "http://<%= request.host%>:<%=request.port%>/swagger_doc",
+                url: "http://<%= request.host%>:<%=request.port%>/<%= swagger_path %>swagger_doc",
                 apiKey: "",
                 dom_id: "swagger-ui-container",
                 supportHeaderParams: false,
