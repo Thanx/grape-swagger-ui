@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag :swagger_ui, :media => :all %>
     <%= csrf_meta_tags %>
 
+    <% protocol = Rails.application.config.force_ssl ? 'https' : 'http' %>
     <% swagger_path = ENV['SWAGGER_UI_PATH'] || '' %>
 
     <script>
@@ -19,7 +20,7 @@
 
         $(function () {
             window.swaggerUi = new SwaggerUi({
-                url: "http://<%= request.host%>:<%=request.port%>/<%= swagger_path %>swagger_doc",
+                url: "<%= protocol %>://<%= request.host%>:<%=request.port%>/<%= swagger_path %>swagger_doc",
                 apiKey: "",
                 dom_id: "swagger-ui-container",
                 supportHeaderParams: false,
